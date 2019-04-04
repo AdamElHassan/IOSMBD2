@@ -29,7 +29,7 @@
         <!--Inloggen-->
         <scene sceneID="raG-59-eay">
             <objects>
-                <viewController id="Vew-hF-0zG" customClass="LoginViewController" customModule="SocialApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vew-hF-0zG" customClass="LoginViewController" customModule="IOSMBD2App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u3E-2W-EBW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,9 +115,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Inloggen" id="fkb-Bl-Sik"/>
                     <connections>
-                        <outlet property="emailTextField" destination="6P3-WL-8zC" id="ndh-u1-BSh"/>
                         <outlet property="passwordTextField" destination="ZRV-fg-Ni8" id="AwF-78-wK1"/>
                         <outlet property="scrollView" destination="XA6-Mt-YWE" id="BPT-ux-vfH"/>
+                        <outlet property="usernameTextField" destination="6P3-WL-8zC" id="M50-oW-Da4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvp-Ok-Ggl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,7 +177,7 @@
         <!--Group Detail View Controller-->
         <scene sceneID="XFx-qY-PeU">
             <objects>
-                <viewController id="l1L-wb-Ifc" customClass="GroupDetailViewController" customModule="SocialApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="l1L-wb-Ifc" customClass="GroupDetailViewController" customModule="IOSMBD2App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DRb-rz-qVw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
