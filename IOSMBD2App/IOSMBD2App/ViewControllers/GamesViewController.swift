@@ -9,81 +9,51 @@
 import UIKit
 import MapKit
 
-class GroupViewController: UITableViewController, CLLocationManagerDelegate {
+class GamesViewController: UITableViewController {
     
-    var locationManager = CLLocationManager()
-    private var apiGroupController: ApiGroupController!
-    private var myUserGroups: [userGroup]! = []
-    private var myGroups: [group]! = []
-    private var noGroupsFoundMessage: [String]! = ["Eigen groepen aan het inladen", "Groepen aan het inladen"]
+    private var apiGamesController: ApiGamesController!
+    private var emptyList : Bool = true
     @IBOutlet var table: UITableView!
-    private var longitude: Double!
-    private var latitude: Double!
-    var content: [[group]]! = []
-    var sections: [(sectionHeader: String, isEmpty: Bool)]! = []
+    var content: [GameData]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sections.insert((sectionHeader: "Groepen waar u lid van bent", isEmpty: true), at: 0)
-        self.sections.insert((sectionHeader: "Groepen in de buurt", isEmpty: true), at: 1)
-        self.content.insert(([]), at: 0)
-        self.content.insert(([]), at: 1)
         self.apiGamesController = ApiGamesController()
-        getGames()
-        navigationController?.navigationBar.prefersLargeTitles = true;
+        content = []
+        getGames()        
         
-        
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].sectionHeader
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-        view.tintColor = UIColor.red
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.black
-        header.textLabel?.font = UIFont(name: "Helvetica-bold", size: 16)
-        header.textLabel?.text = header.textLabel?.text?.capitalized
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if(content[section].count == 0){
+        if(content.count == 0){
+            emptyList = true
             return 1
         }
-        return content[section].count;
+        return content.count;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath)
-        if(sections[indexPath.section].isEmpty == false){
-            let group = content[indexPath.section][indexPath.row]
-            if(!group.name.isEmpty){
-                cell.textLabel?.text = group.name
-            }
+        
+        if(!emptyList){
+            let game = content[indexPath.row]
+            cell.textLabel?.text = game._id
             cell.imageView?.layer.borderWidth = 1.0
             cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.size.width)!/2;
             cell.imageView?.layer.masksToBounds = true;
             cell.imageView?.isHidden = false
             cell.isUserInteractionEnabled = true
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-            
-            if(group.distance != nil){
-                cell.detailTextLabel?.text = String (group.distance!) + " km"
-            }else{
-                cell.detailTextLabel?.text = ""
-            }
+            cell.detailTextLabel?.text =  "Users: " + String(game.users.count)
         }else{
-            cell.textLabel?.text = noGroupsFoundMessage[indexPath.section]
+            cell.textLabel?.text = "Loading games"
             cell.detailTextLabel?.text = ""
             cell.imageView?.isHidden = true
             cell.isUserInteractionEnabled = false
             cell.accessoryType = UITableViewCell.AccessoryType.none
         }
+        
+        
         return cell
     }
     
@@ -91,10 +61,10 @@ class GroupViewController: UITableViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func getMyGroups(){
-        self.apiGroupController.getMyGroups() { userGroupData, errors in
-            if (userGroupData != nil) {
-                
+    func getGames(){
+        self.apiGamesController.getGames() { games in
+            if (games != nil) {
+                self.content = games
             }else{
                 
             }

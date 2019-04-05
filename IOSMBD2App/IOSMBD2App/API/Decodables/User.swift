@@ -8,14 +8,16 @@
 
 import Foundation
 
-//struct UserData : Codable {
-//    var user : user
-//}
+struct UsersData : Codable {
+    var users : [UserData?]
+}
 
-//struct UserData : Codable {
-//    var local : local
-//}
 struct UserData : Codable {
+    var isAdmin : Bool
+    var _id     : String
+}
+
+struct LoginUserData : Codable {
     var username : String
     var password : String
 }
