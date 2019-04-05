@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct GamesData : Codable {
+    var games : [GameData]
+}
+
+struct GameData : Codable {
+    var _id : String
+    var status : String
+    var users  : [UserData]
+}

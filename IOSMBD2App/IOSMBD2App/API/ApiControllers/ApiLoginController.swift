@@ -10,13 +10,14 @@ import Foundation
 
 class ApiLoginController {
     
-    private var user : UserData!
+    private var user : LoginUserData!
     
     func makeRequest(url: String, httpMethode: String, data: [String: Any]) -> URLRequest! {
         guard let url = URL(string: "https://blankapi.herokuapp.com/" + url) else {
             print("Error: cannot create URL")
             return nil
         }
+        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = httpMethode
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -32,7 +33,7 @@ class ApiLoginController {
         return urlRequest
     }
     
-    func login(username: String, password: String, completionHandler: @escaping (_ user: UserData?) -> ()) {
+    func login(username: String, password: String, completionHandler: @escaping (_ user: LoginUserData?) -> ()) {
         let data = ["username": username, "password": password]
         let urlRequest = self.makeRequest(url: "login", httpMethode: "POST", data: data)
         if (urlRequest != nil) {
@@ -42,7 +43,7 @@ class ApiLoginController {
                 if let data = data {
                     do{
                         let decoder = JSONDecoder()
-                        let userData = try decoder.decode(UserData.self, from: data)
+                        let userData = try decoder.decode(LoginUserData.self, from: data)
                         DispatchQueue.main.async {
                             completionHandler(userData)
                         }

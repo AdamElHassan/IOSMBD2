@@ -29,7 +29,7 @@
         <!--Inloggen-->
         <scene sceneID="raG-59-eay">
             <objects>
-                <viewController id="Vew-hF-0zG" customClass="LoginViewController" customModule="IOSMBD2App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vew-hF-0zG" customClass="LoginViewController" customModule="IOSMBD2App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u3E-2W-EBW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,16 +124,16 @@
             </objects>
             <point key="canvasLocation" x="3158" y="1442"/>
         </scene>
-        <!--Groepen-->
+        <!--Games-->
         <scene sceneID="hp4-Cz-GHh">
             <objects>
-                <viewController id="JyN-rG-iLb" customClass="GamesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GamesOverview" id="JyN-rG-iLb" customClass="GamesViewController" customModule="IOSMBD2App" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="LGt-Ss-6bD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" textLabel="wpo-H6-Z2b" detailTextLabel="A6K-Hk-kmR" imageView="ikE-Xe-WNd" style="IBUITableViewCellStyleValue1" id="VeV-QM-AFM">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GameCell" textLabel="wpo-H6-Z2b" detailTextLabel="A6K-Hk-kmR" imageView="jnv-4P-AKT" style="IBUITableViewCellStyleValue1" id="VeV-QM-AFM">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VeV-QM-AFM" id="EKJ-ab-1He">
@@ -141,7 +141,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wpo-H6-Z2b">
-                                            <rect key="frame" x="47" y="12" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="75" y="12" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -154,8 +154,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="defaultGroupIcon" id="ikE-Xe-WNd">
-                                            <rect key="frame" x="16" y="13" width="16" height="16"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="defaultGamesIcon" id="jnv-4P-AKT">
+                                            <rect key="frame" x="16" y="0.0" width="44" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -163,9 +163,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Groepen" id="5SP-tE-Tln">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="aXX-Xe-v70"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Games" id="sec-Xa-7zf"/>
                     <connections>
                         <outlet property="table" destination="LGt-Ss-6bD" id="1C3-fO-qG7"/>
                     </connections>
@@ -174,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="3945" y="1442"/>
         </scene>
-        <!--Group Detail View Controller-->
+        <!--Game Detail View Controller-->
         <scene sceneID="XFx-qY-PeU">
             <objects>
-                <viewController id="l1L-wb-Ifc" customClass="GroupDetailViewController" customModule="IOSMBD2App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="l1L-wb-Ifc" customClass="GameDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DRb-rz-qVw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,7 +206,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defaultGroupIcon" width="16" height="16"/>
+        <image name="defaultGamesIcon" width="512" height="512"/>
         <image name="logo SocialApp" width="16" height="16"/>
     </resources>
 </document>
