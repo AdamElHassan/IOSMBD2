@@ -17,6 +17,7 @@ class ApiLoginController {
             print("Error: cannot create URL")
             return nil
         }
+        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = httpMethode
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")

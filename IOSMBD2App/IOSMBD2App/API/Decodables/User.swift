@@ -8,11 +8,14 @@
 
 import Foundation
 
-struct UserData : Codable {
-    var user : user
-}
+//struct UserData : Codable {
+//    var user : user
+//}
 
-struct user : Codable {
+//struct UserData : Codable {
+//    var local : local
+//}
+struct UserData : Codable {
     var username : String
     var password : String
 }

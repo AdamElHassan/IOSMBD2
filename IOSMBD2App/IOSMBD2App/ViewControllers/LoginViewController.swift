@@ -77,9 +77,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     fatalError("Error updating keychain - \(error)")
                 }
                 UserDefaults.standard.set(true, forKey: "hasLoginKey")
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let startViewController = storyBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                self.present(startViewController, animated: true, completion: nil)
+            let storyBoard: UIStoryboard!
+                storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                print(storyBoard)
+                let GamesViewController: GamesViewController = storyBoard.instantiateViewController(withIdentifier: "GamesOverview") as! GamesViewController
+                print(GamesViewController)
+                self.present(GamesViewController, animated: true, completion: nil)
                 self.activityIndicator.stopAnimating()
             }
         }
