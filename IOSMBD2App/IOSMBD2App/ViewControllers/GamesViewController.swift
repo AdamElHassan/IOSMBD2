@@ -29,6 +29,7 @@ class GamesViewController: UITableViewController {
             emptyList = true
             return 1
         }
+        emptyList = false
         return content.count;
     }
     
@@ -37,7 +38,7 @@ class GamesViewController: UITableViewController {
         
         if(!emptyList){
             let game = content[indexPath.row]
-            cell.textLabel?.text = game._id
+            cell.textLabel?.text = String(game._id.suffix(4))
             cell.imageView?.layer.borderWidth = 1.0
             cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.size.width)!/2;
             cell.imageView?.layer.masksToBounds = true;
@@ -64,7 +65,7 @@ class GamesViewController: UITableViewController {
     func getGames(){
         self.apiGamesController.getGames() { games in
             if (games != nil) {
-                self.content = games
+                self.content = games?.games
             }else{
                 
             }

@@ -10,7 +10,7 @@ import Foundation
 
 class ApiGamesController {
     
-    private var games : [GameData]!
+    private var games : GamesData!
     
     func makeRequest(url: String, httpMethode: String, data: [String: Any]?) -> URLRequest! {
         guard let url = URL(string: "https://blankapi.herokuapp.com/" + url) else {
@@ -35,7 +35,7 @@ class ApiGamesController {
         return urlRequest
     }
     
-    func getGames( completionHandler: @escaping (_ games: [GameData]?) -> ()) {
+    func getGames( completionHandler: @escaping (_ games: GamesData?) -> ()) {
         let urlRequest = self.makeRequest(url: "games", httpMethode: "GET", data: nil)
         if (urlRequest != nil) {
             let session = URLSession.shared
@@ -45,7 +45,7 @@ class ApiGamesController {
                 
                 if let data = data {
                     do{
-                        let games = try decoder.decode([GameData].self, from: data)
+                        let games = try decoder.decode(GamesData.self, from: data)
                         DispatchQueue.main.async {
                             completionHandler(games)
                         }
