@@ -15,11 +15,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     private var activityIndicator : UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var logoImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.usernameTextField.keyboardType = UIKeyboardType.emailAddress
         self.apiLoginController = ApiLoginController()
+        setLogo()
         self.activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         view.addSubview(self.activityIndicator)
         self.activityIndicator.center = view.center
@@ -121,6 +123,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func startActivityIndicator() {
         self.activityIndicator.startAnimating()
+    }
+    func setLogo(){
+        let number = Int.random(in: 0 ..< 10)
+        self.apiLoginController.setLogo(number: String(number)) { data in
+            if (data != nil) {
+                self.logoImage.image = UIImage( data:data!)
+            } else {
+               
+            }
+        }
     }
     
 }

@@ -58,5 +58,19 @@ class ApiLoginController {
             task.resume()
         }
     }
+    func setLogo(number: String, completionHandler: @escaping (_ data: Data?) -> ()) {
+        if let url = URL( string:"https://api.adorable.io/avatars/285/abott"+number+"@adorable.png")
+        {
+            DispatchQueue.global().async {
+                if let data = try? Data( contentsOf:url)
+                {
+                    DispatchQueue.main.async {
+                        completionHandler(data)
+                        
+                    }
+                }
+            }
+        }
+    }
 }
 
