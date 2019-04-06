@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270D1A8E22589E800011E02E /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270D1A8D22589E800011E02E /* LoggedInUser.swift */; };
+		270D1A902258AC7E0011E02E /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270D1A8F2258AC7E0011E02E /* CreateGameViewController.swift */; };
 		275F089822569AA900900641 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F089722569AA900900641 /* User.swift */; };
 		275F089A22569DA700900641 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F089922569DA700900641 /* KeychainPasswordItem.swift */; };
 		27C61B0D2255510800926E2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C61B0C2255510800926E2A /* AppDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270D1A8D22589E800011E02E /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
+		270D1A8F2258AC7E0011E02E /* CreateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		275F089722569AA900900641 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		275F089922569DA700900641 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		27C61B092255510800926E2A /* IOSMBD2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSMBD2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +80,7 @@
 				27C61B152255510900926E2A /* LaunchScreen.storyboard */,
 				27C61B182255510900926E2A /* Info.plist */,
 				27C61B2422555B6B00926E2A /* ViewControllers */,
+				270D1A8D22589E800011E02E /* LoggedInUser.swift */,
 			);
 			path = IOSMBD2App;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 				27C61B1E22555B0100926E2A /* LoginViewController.swift */,
 				27C61B2022555B3500926E2A /* GamesViewController.swift */,
 				27C61B2222555B5A00926E2A /* GameDetailViewController.swift */,
+				270D1A8F2258AC7E0011E02E /* CreateGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -196,7 +202,9 @@
 				275F089A22569DA700900641 /* KeychainPasswordItem.swift in Sources */,
 				27C61B1F22555B0100926E2A /* LoginViewController.swift in Sources */,
 				27C61B2922555C4600926E2A /* ApiGamesController.swift in Sources */,
+				270D1A902258AC7E0011E02E /* CreateGameViewController.swift in Sources */,
 				27C61B0D2255510800926E2A /* AppDelegate.swift in Sources */,
+				270D1A8E22589E800011E02E /* LoggedInUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
