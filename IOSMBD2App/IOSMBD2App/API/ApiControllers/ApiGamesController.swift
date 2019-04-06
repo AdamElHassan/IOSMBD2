@@ -11,8 +11,9 @@ import Foundation
 class ApiGamesController {
     
     private var games : GamesData!
+    private var game : GameData!
     
-    func makeRequest(url: String, httpMethode: String, data: [String: Any]?) -> URLRequest! {
+    func makeRequest(url: String, httpMethode: String, data: [String: String]?) -> URLRequest! {
         guard let url = URL(string: "https://blankapi.herokuapp.com/" + url) else {
             print("Error: cannot create URL")
             return nil
@@ -21,18 +22,46 @@ class ApiGamesController {
         urlRequest.httpMethod = httpMethode
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-//        if(data != nil && httpMethode == "POST"){
-//
-//            let json: Data
-//            do {
-//                json = try JSONSerialization.data(withJSONObject: data!, options: [])
-//                urlRequest.httpBody = json
-//            } catch {
-//                print("Error: cannot create JSON from loginData")
-//                return nil
-//            }
-//        }
+        if(data != nil && httpMethode == "POST"){
+
+            let json: Data
+            do {
+                json = try JSONSerialization.data(withJSONObject: data ?? [], options: [])
+                urlRequest.httpBody = json
+            } catch {
+                print("Error: cannot create JSON from loginData")
+                return nil
+            }
+        
+        
+        }
         return urlRequest
+    }
+    
+    func createGame(status: String, completionHandler: @escaping (_ game: GameData?) -> ()) {
+        let data = ["status": status]
+        let urlRequest = self.makeRequest(url: "games", httpMethode: "POST", data: data)
+        if (urlRequest != nil) {
+            let session = URLSession.shared
+            let task = session.dataTask(with: urlRequest!) {
+                (data, response, error) in
+                if let data = data {
+                    do{
+                        let decoder = JSONDecoder()
+                        let game = try decoder.decode(GameData.self, from: data)
+                        DispatchQueue.main.async {
+                            completionHandler(game)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            //todo: check if API is ofline and give different error
+                            completionHandler(nil)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
     }
     
     func getGames( completionHandler: @escaping (_ games: GamesData?) -> ()) {
@@ -59,9 +88,9 @@ class ApiGamesController {
         }
     }
     
-//    func joinGroup(group: String, role: Int, completionHandler: @escaping (_ group: UserGroupArrayData?, _ error: ErrorData?) -> ()) {
-//        let data = ["group": group, "role": role] as [String : Any]
-//        let urlRequest = self.makeRequest(url: "usergroups", httpMethode: "POST", data: data)
+//    func joinGame(users: [String], gameId: String, completionHandler: @escaping (_ game: GameData?) -> ()) {
+//        let data = ["users": users]
+//        let urlRequest = self.makeRequest(url: "groups/"+gameId, httpMethode: "PUT", data: data)
 //        if (urlRequest != nil) {
 //            let session = URLSession.shared
 //            let decoder = JSONDecoder()
@@ -69,20 +98,12 @@ class ApiGamesController {
 //                (data, response, error) in
 //                if let data = data {
 //                    do{
-//                        let userGroup = try decoder.decode(UserGroupArrayData.self, from: data)
+//                        let game = try decoder.decode(GameData.self, from: data)
 //                        DispatchQueue.main.async {
-//                            completionHandler(userGroup, nil)
+//                            completionHandler(game)
 //                        }
 //                    } catch {
-//                        do {
-//                            let messageData = try decoder.decode(ErrorData.self, from: data)
-//                            DispatchQueue.main.async {
-//                                completionHandler(nil, messageData)
-//                            }
-//                        }
-//                        catch {
-//                            print("Something went wrong while decoding errormessages")
-//                        }
+//
 //                    }
 //                }
 //            }

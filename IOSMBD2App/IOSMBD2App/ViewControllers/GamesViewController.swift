@@ -21,7 +21,6 @@ class GamesViewController: UITableViewController {
         self.apiGamesController = ApiGamesController()
         content = []
         getGames()        
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -69,10 +68,13 @@ class GamesViewController: UITableViewController {
             }else{
                 
             }
-            self.do_table_refresh()
+            
         }
     }
-    
+    func addGame(game: GameData){
+        content.insert(game, at: 0)
+        self.do_table_refresh()
+    }
     func do_table_refresh() {
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {
@@ -81,15 +83,22 @@ class GamesViewController: UITableViewController {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let groupDetail = segue.destination as? GroupDetailViewController{
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let group = content[indexPath.section][indexPath.row]
-//                groupDetail.group = group
-//                groupDetail.groupViewController = self
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "CreateGameView"){
+            if let createGame = segue.destination as? CreateGameViewController{
+                createGame.gameViewController = self
+            }
+        }
+        if(segue.identifier == "CreateDetailView"){
+            if let gameDetail = segue.destination as? GameDetailViewController{
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    let game = content[indexPath.row]
+                    gameDetail.game = game
+                    gameDetail.gameViewController = self
+                }
+            }
+        }
+    }
     
 }
 

@@ -80,7 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let storyBoard: UIStoryboard!
                 storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 print(storyBoard)
-                let GamesViewController: GamesViewController = storyBoard.instantiateViewController(withIdentifier: "GamesOverview") as! GamesViewController
+                let GamesViewController = storyBoard.instantiateViewController(withIdentifier: "GamesOverview") as! UINavigationController
                 print(GamesViewController)
                 self.present(GamesViewController, animated: true, completion: nil)
                 self.activityIndicator.stopAnimating()

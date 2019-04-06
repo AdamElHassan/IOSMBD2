@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCT-Wn-ykU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2354" y="1442"/>
+            <point key="canvasLocation" x="2353" y="1531"/>
         </scene>
         <!--Inloggen-->
         <scene sceneID="raG-59-eay">
@@ -43,7 +43,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="vG6-9w-gAK">
                                                 <rect key="frame" x="19" y="185.5" width="337.5" height="232"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo SocialApp" translatesAutoresizingMaskIntoConstraints="NO" id="9uv-10-kic">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9uv-10-kic">
                                                         <rect key="frame" x="0.0" y="0.0" width="337.5" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="eyT-nN-QXa"/>
@@ -122,16 +122,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvp-Ok-Ggl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3158" y="1442"/>
+            <point key="canvasLocation" x="3190" y="1531"/>
         </scene>
         <!--Games-->
         <scene sceneID="hp4-Cz-GHh">
             <objects>
-                <viewController storyboardIdentifier="GamesOverview" id="JyN-rG-iLb" customClass="GamesViewController" customModule="IOSMBD2App" sceneMemberID="viewController">
+                <viewController id="JyN-rG-iLb" customClass="GamesViewController" customModule="IOSMBD2App" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="LGt-Ss-6bD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EPI-51-0Rk">
+                            <rect key="frame" x="0.0" y="117.5" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Create Game"/>
+                            <connections>
+                                <segue destination="QAc-Mu-fE2" kind="show" identifier="CreateGameView" id="XRm-nV-UAX"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GameCell" textLabel="wpo-H6-Z2b" detailTextLabel="A6K-Hk-kmR" imageView="jnv-4P-AKT" style="IBUITableViewCellStyleValue1" id="VeV-QM-AFM">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -160,6 +168,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="l1L-wb-Ifc" kind="showDetail" identifier="CreateDetailView" id="GMP-pI-i7q"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -170,43 +181,111 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CrJ-2y-TlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3945" y="1442"/>
+            <point key="canvasLocation" x="3996" y="763"/>
         </scene>
-        <!--Game Detail View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="syk-Id-Lbo">
+            <objects>
+                <navigationController storyboardIdentifier="GamesOverview" id="28Z-Sh-jpJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eE7-Qd-GKd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JyN-rG-iLb" kind="relationship" relationship="rootViewController" id="GOH-FE-4bJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W1B-oL-xr9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4015" y="1531"/>
+        </scene>
+        <!--Game Information-->
         <scene sceneID="XFx-qY-PeU">
             <objects>
-                <viewController id="l1L-wb-Ifc" customClass="GameDetailViewController" sceneMemberID="viewController">
+                <viewController id="l1L-wb-Ifc" customClass="GameDetailViewController" customModule="IOSMBD2App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DRb-rz-qVw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fci-DM-eJd">
-                                <rect key="frame" x="148.5" y="328.5" width="78" height="30"/>
-                                <state key="normal" title="Lid Worden"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="game Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seW-6S-Mad">
+                                <rect key="frame" x="137" y="372" width="101" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="game ID:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tm-jl-A2Y">
+                                <rect key="frame" x="153" y="246" width="68" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zAE-74-bzl"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Game Information" id="lp9-2p-dpW"/>
+                    <connections>
+                        <outlet property="gameID" destination="2Tm-jl-A2Y" id="PgK-nm-Av1"/>
+                        <outlet property="gameStatus" destination="seW-6S-Mad" id="Zt7-wI-UOp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zWh-fC-mAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4724" y="1530.5847076461771"/>
+        </scene>
+        <!--Create Game-->
+        <scene sceneID="EnN-z8-GEO">
+            <objects>
+                <viewController id="QAc-Mu-fE2" customClass="CreateGameViewController" customModule="IOSMBD2App" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bnN-hI-SiD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-Ii-eYX" userLabel="statusPicker">
+                                <rect key="frame" x="16" y="117" width="51" height="216"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the status of your game:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-2H-BbG">
+                                <rect key="frame" x="16" y="80" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgK-Hc-SiH">
+                                <rect key="frame" x="16" y="349" width="343" height="30"/>
+                                <state key="normal" title="Create"/>
                                 <connections>
-                                    <action selector="joinGroup:" destination="l1L-wb-Ifc" eventType="primaryActionTriggered" id="Cqh-Da-yOV"/>
+                                    <action selector="createGameClick:" destination="QAc-Mu-fE2" eventType="primaryActionTriggered" id="XRe-gz-jQw"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fci-DM-eJd" firstAttribute="centerY" secondItem="zAE-74-bzl" secondAttribute="centerY" id="Cn6-S5-UtF"/>
-                            <constraint firstItem="fci-DM-eJd" firstAttribute="centerX" secondItem="zAE-74-bzl" secondAttribute="centerX" id="lgm-B5-ghv"/>
+                            <constraint firstItem="aQS-y0-FGU" firstAttribute="trailing" secondItem="PgK-Hc-SiH" secondAttribute="trailing" constant="16" id="61n-oy-rYp"/>
+                            <constraint firstItem="CFH-Ii-eYX" firstAttribute="top" secondItem="OmE-2H-BbG" secondAttribute="bottom" constant="16" id="Es2-25-UlM"/>
+                            <constraint firstItem="aQS-y0-FGU" firstAttribute="trailing" secondItem="CFH-Ii-eYX" secondAttribute="trailing" constant="16" id="Ll0-Fj-MVf"/>
+                            <constraint firstItem="OmE-2H-BbG" firstAttribute="top" secondItem="aQS-y0-FGU" secondAttribute="top" constant="16" id="YVq-nI-qL7"/>
+                            <constraint firstItem="CFH-Ii-eYX" firstAttribute="leading" secondItem="aQS-y0-FGU" secondAttribute="leading" constant="16" id="akI-PH-XDy"/>
+                            <constraint firstItem="PgK-Hc-SiH" firstAttribute="top" secondItem="CFH-Ii-eYX" secondAttribute="bottom" constant="16" id="gWV-RH-kCF"/>
+                            <constraint firstItem="aQS-y0-FGU" firstAttribute="trailing" secondItem="OmE-2H-BbG" secondAttribute="trailing" constant="16" id="knP-Vp-hKZ"/>
+                            <constraint firstItem="PgK-Hc-SiH" firstAttribute="leading" secondItem="aQS-y0-FGU" secondAttribute="leading" constant="16" id="mA4-Wp-OIG"/>
+                            <constraint firstItem="OmE-2H-BbG" firstAttribute="leading" secondItem="aQS-y0-FGU" secondAttribute="leading" constant="16" id="xr4-QA-qb9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zAE-74-bzl"/>
+                        <viewLayoutGuide key="safeArea" id="aQS-y0-FGU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jNp-32-8AN"/>
+                    <navigationItem key="navigationItem" title="Create Game" id="9wB-sS-EfP"/>
                     <connections>
-                        <outlet property="joinButton" destination="fci-DM-eJd" id="1yT-Zh-POq"/>
+                        <outlet property="statusPicker" destination="CFH-Ii-eYX" id="TZl-RM-CVY"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zWh-fC-mAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qN3-1R-Sqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4724" y="1442"/>
+            <point key="canvasLocation" x="4724" y="763.26836581709154"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultGamesIcon" width="512" height="512"/>
-        <image name="logo SocialApp" width="16" height="16"/>
+        <image name="logo" width="720" height="720"/>
     </resources>
 </document>
