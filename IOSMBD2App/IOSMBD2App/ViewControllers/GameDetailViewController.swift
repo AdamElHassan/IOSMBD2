@@ -19,8 +19,8 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false;
-        gameID.text = String(game?._id.suffix(4) ?? "Not Found")
-        gameStatus.text = game?.status
+        gameID.text = "Game ID: " + String(game?._id.suffix(4) ?? "Not Found")
+        gameStatus.text = "Game status: " + (game?.status)!
         gameID.sizeToFit()
         gameStatus.sizeToFit()
     }
