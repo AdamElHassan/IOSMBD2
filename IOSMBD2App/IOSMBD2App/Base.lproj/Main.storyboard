@@ -115,6 +115,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Inloggen" id="fkb-Bl-Sik"/>
                     <connections>
+                        <outlet property="logoImage" destination="9uv-10-kic" id="wcj-89-Dzg"/>
                         <outlet property="passwordTextField" destination="ZRV-fg-Ni8" id="AwF-78-wK1"/>
                         <outlet property="scrollView" destination="XA6-Mt-YWE" id="BPT-ux-vfH"/>
                         <outlet property="usernameTextField" destination="6P3-WL-8zC" id="M50-oW-Da4"/>
@@ -261,7 +262,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-Ii-eYX" userLabel="statusPicker">
-                                <rect key="frame" x="16" y="117" width="51" height="216"/>
+                                <rect key="frame" x="16" y="117" width="343" height="216"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the status of your game:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-2H-BbG">
                                 <rect key="frame" x="16" y="80" width="343" height="21"/>
