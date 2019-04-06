@@ -169,7 +169,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="l1L-wb-Ifc" kind="showDetail" identifier="CreateDetailView" id="GMP-pI-i7q"/>
+                                    <segue destination="l1L-wb-Ifc" kind="show" identifier="CreateDetailView" id="GMP-pI-i7q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -199,7 +199,7 @@
             </objects>
             <point key="canvasLocation" x="4015" y="1531"/>
         </scene>
-        <!--Game Information-->
+        <!--Game information-->
         <scene sceneID="XFx-qY-PeU">
             <objects>
                 <viewController id="l1L-wb-Ifc" customClass="GameDetailViewController" customModule="IOSMBD2App" sceneMemberID="viewController">
@@ -207,28 +207,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="game Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seW-6S-Mad">
-                                <rect key="frame" x="137" y="372" width="101" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="game ID:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tm-jl-A2Y">
+                                <rect key="frame" x="16" y="80" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="game ID:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tm-jl-A2Y">
-                                <rect key="frame" x="153" y="246" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="game Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seW-6S-Mad">
+                                <rect key="frame" x="16" y="117" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hld-Me-MY4">
+                                <rect key="frame" x="16" y="154" width="343" height="30"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="shareGame:" destination="l1L-wb-Ifc" eventType="primaryActionTriggered" id="Lrk-XF-4Vo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hld-Me-MY4" firstAttribute="leading" secondItem="zAE-74-bzl" secondAttribute="leading" constant="16" id="08G-m1-1pH"/>
+                            <constraint firstItem="zAE-74-bzl" firstAttribute="trailing" secondItem="Hld-Me-MY4" secondAttribute="trailing" constant="16" id="BgC-Q7-E4t"/>
+                            <constraint firstItem="2Tm-jl-A2Y" firstAttribute="top" secondItem="zAE-74-bzl" secondAttribute="top" constant="16" id="FtN-eu-4Wh"/>
+                            <constraint firstItem="zAE-74-bzl" firstAttribute="trailing" secondItem="seW-6S-Mad" secondAttribute="trailing" constant="16" id="KjL-Fl-b6c"/>
+                            <constraint firstItem="seW-6S-Mad" firstAttribute="leading" secondItem="zAE-74-bzl" secondAttribute="leading" constant="16" id="R2C-AA-XAA"/>
+                            <constraint firstItem="zAE-74-bzl" firstAttribute="trailing" secondItem="2Tm-jl-A2Y" secondAttribute="trailing" constant="16" id="SbL-5Y-rDr"/>
+                            <constraint firstItem="seW-6S-Mad" firstAttribute="top" secondItem="2Tm-jl-A2Y" secondAttribute="bottom" constant="16" id="WFn-kn-1Ut"/>
+                            <constraint firstItem="Hld-Me-MY4" firstAttribute="top" secondItem="seW-6S-Mad" secondAttribute="bottom" constant="16" id="dGb-EP-Qo7"/>
+                            <constraint firstItem="2Tm-jl-A2Y" firstAttribute="leading" secondItem="zAE-74-bzl" secondAttribute="leading" constant="16" id="g3H-50-kSG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zAE-74-bzl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Game Information" id="lp9-2p-dpW"/>
+                    <navigationItem key="navigationItem" title="Game information" id="4RU-Jv-JLf"/>
                     <connections>
                         <outlet property="gameID" destination="2Tm-jl-A2Y" id="PgK-nm-Av1"/>
                         <outlet property="gameStatus" destination="seW-6S-Mad" id="Zt7-wI-UOp"/>
+                        <outlet property="shareButton" destination="Hld-Me-MY4" id="MfW-0g-fBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zWh-fC-mAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
