@@ -52,8 +52,6 @@ class GamesViewController: UITableViewController {
             cell.isUserInteractionEnabled = false
             cell.accessoryType = UITableViewCell.AccessoryType.none
         }
-        
-        
         return cell
     }
     
@@ -65,10 +63,7 @@ class GamesViewController: UITableViewController {
         self.apiGamesController.getGames() { games in
             if (games != nil) {
                 self.content = games?.games
-            }else{
-                
             }
-            
         }
     }
     func addGame(game: GameData){

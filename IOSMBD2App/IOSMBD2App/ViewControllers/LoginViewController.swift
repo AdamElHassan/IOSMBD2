@@ -19,7 +19,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.usernameTextField.keyboardType = UIKeyboardType.emailAddress
         self.apiLoginController = ApiLoginController()
         setLogo()
         self.activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)

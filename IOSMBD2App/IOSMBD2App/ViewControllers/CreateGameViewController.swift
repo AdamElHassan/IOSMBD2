@@ -31,17 +31,17 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
     // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
+        return 1
     }
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return pickerData.count
+        return pickerData.count
     }
     
     // The data to return fopr the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return pickerData[row]
+        return pickerData[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -56,8 +56,6 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
             if (game != nil) {
                 self.gameViewController.addGame(game: game!)
                 self.navigationController?.popViewController(animated: true)
-            }else{
-                
             }
         }
     }

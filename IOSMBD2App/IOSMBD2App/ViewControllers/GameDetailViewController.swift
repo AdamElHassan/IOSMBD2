@@ -21,16 +21,13 @@ class GameDetailViewController: UIViewController {
         super.viewDidLoad()
         
         gameID.text = "Game ID: " + String(game?._id.suffix(4) ?? "Not Found")
-        gameStatus.text = "Game status: " + (game?.status)!
+        gameStatus.text = "Game status: " + (game?.status ?? "Not Found")
         gameID.sizeToFit()
         gameStatus.sizeToFit()
     }
 
     @IBAction func shareGame(_ sender: Any) {
         let firstActivityItem = "Join this game ID!! ID: " + String(game?._id.suffix(4) ?? "Not found")
-//        let secondActivityItem : NSURL = NSURL(string: "https://blankapi.herokuapp.com")!
-        // If you want to put an image
-//        let image : UIImage = UIImage(named: "image.jpg")!
         
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem], applicationActivities: nil)

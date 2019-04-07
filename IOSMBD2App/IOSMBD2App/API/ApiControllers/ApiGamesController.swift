@@ -80,34 +80,14 @@ class ApiGamesController {
                         }
                     }
                     catch {
-                        
+                        DispatchQueue.main.async {
+                            //todo: check if API is ofline and give different error
+                            completionHandler(nil)
+                        }
                     }
                 }
             }
             task.resume()
         }
     }
-    
-//    func joinGame(users: [String], gameId: String, completionHandler: @escaping (_ game: GameData?) -> ()) {
-//        let data = ["users": users]
-//        let urlRequest = self.makeRequest(url: "groups/"+gameId, httpMethode: "PUT", data: data)
-//        if (urlRequest != nil) {
-//            let session = URLSession.shared
-//            let decoder = JSONDecoder()
-//            let task = session.dataTask(with: urlRequest!) {
-//                (data, response, error) in
-//                if let data = data {
-//                    do{
-//                        let game = try decoder.decode(GameData.self, from: data)
-//                        DispatchQueue.main.async {
-//                            completionHandler(game)
-//                        }
-//                    } catch {
-//
-//                    }
-//                }
-//            }
-//            task.resume()
-//        }
-//    }
 }
