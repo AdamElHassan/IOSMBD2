@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             } else {
                 UserDefaults.standard.setValue(username, forKey: "username")
                 do {
-                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: self.usernameTextField.text!,accessGroup: KeychainConfiguration.accessGroup)
+                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: username,accessGroup: KeychainConfiguration.accessGroup)
                     try passwordItem.savePassword(password)
                 } catch {
                     fatalError("Error updating keychain - \(error)")

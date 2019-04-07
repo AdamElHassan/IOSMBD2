@@ -12,6 +12,7 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     
     @IBOutlet weak var statusPicker: UIPickerView!
+    @IBOutlet weak var createButton: UIButton!
     
     var gameViewController : GamesViewController?
     
@@ -51,6 +52,7 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     @IBAction func createGameClick(_ sender: Any) {
+        createButton.isEnabled = false
         createGame()
     }
     func createGame(){

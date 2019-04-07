@@ -292,6 +292,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Game" id="9wB-sS-EfP"/>
                     <connections>
+                        <outlet property="createButton" destination="PgK-Hc-SiH" id="dP0-Ve-ZMV"/>
                         <outlet property="statusPicker" destination="CFH-Ii-eYX" id="TZl-RM-CVY"/>
                     </connections>
                 </viewController>
