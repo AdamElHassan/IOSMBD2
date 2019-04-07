@@ -66,6 +66,7 @@ class GamesViewController: UITableViewController {
         self.apiGamesController.getGames() { games in
             if (games != nil) {
                 self.content = (games?.games ?? [])
+                self.table.reloadData()
             }
         }
     }

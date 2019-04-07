@@ -133,14 +133,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EPI-51-0Rk">
-                            <rect key="frame" x="0.0" y="117.5" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Create Game"/>
-                            <connections>
-                                <segue destination="QAc-Mu-fE2" kind="show" identifier="CreateGameView" id="XRm-nV-UAX"/>
-                            </connections>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GameCell" textLabel="wpo-H6-Z2b" detailTextLabel="A6K-Hk-kmR" imageView="jnv-4P-AKT" style="IBUITableViewCellStyleValue1" id="VeV-QM-AFM">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -175,7 +167,13 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Games" id="sec-Xa-7zf"/>
+                    <navigationItem key="navigationItem" title="Games" id="sec-Xa-7zf">
+                        <barButtonItem key="rightBarButtonItem" title="Create game" id="kOm-SU-YZO">
+                            <connections>
+                                <segue destination="QAc-Mu-fE2" kind="show" identifier="CreateGameView" id="xBB-Gh-96A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="LGt-Ss-6bD" id="1C3-fO-qG7"/>
                     </connections>
