@@ -50,9 +50,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        let username = self.usernameTextField.text
-        let password = self.passwordTextField.text
-        if (username!.isEmpty || password!.isEmpty) {
+        guard let username = self.usernameTextField.text else { return }
+        guard let password = self.passwordTextField.text else { return }
+        if (username.isEmpty || password.isEmpty) {
             let alert = UIAlertController(title: "Fout", message: "Vul beide velden in.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Sluiten", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         self.disableTextInput()
         self.startActivityIndicator()
-        self.apiLoginController.login(username: username!, password: password!) { profile in
+        self.apiLoginController.login(username: username, password: password) { profile in
             if (profile == nil) {
                 let alert = UIAlertController(title: "Fout", message: "Ongeldige logingegevens.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Sluiten", style: .default, handler: nil))
@@ -69,10 +69,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.text = ""
                 self.activityIndicator?.stopAnimating()
             } else {
-                UserDefaults.standard.setValue(username!, forKey: "username")
+                UserDefaults.standard.setValue(username, forKey: "username")
                 do {
                     let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: self.usernameTextField.text!,accessGroup: KeychainConfiguration.accessGroup)
-                    try passwordItem.savePassword(password!)
+                    try passwordItem.savePassword(password)
                 } catch {
                     fatalError("Error updating keychain - \(error)")
                 }
