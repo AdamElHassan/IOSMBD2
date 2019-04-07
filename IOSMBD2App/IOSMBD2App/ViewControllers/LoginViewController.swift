@@ -53,8 +53,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let username = self.usernameTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         if (username.isEmpty || password.isEmpty) {
-            let alert = UIAlertController(title: "Fout", message: "Vul beide velden in.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Sluiten", style: .default, handler: nil))
+            let alert = UIAlertController(title: "WRONG!", message: "Fill in both fields", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true)
             return
         }
@@ -62,8 +62,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.startActivityIndicator()
         self.apiLoginController.login(username: username, password: password) { profile in
             if (profile == nil) {
-                let alert = UIAlertController(title: "Fout", message: "Ongeldige logingegevens.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Sluiten", style: .default, handler: nil))
+                let alert = UIAlertController(title: "WRONG!", message: "Username or password is Wrong", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                 self.present(alert, animated: true)
                 self.enableTextInput()
                 self.passwordTextField.text = ""
