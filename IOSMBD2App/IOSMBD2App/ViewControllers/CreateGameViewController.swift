@@ -57,8 +57,14 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.apiGamesController.createGame(status: selectedPick) { game in
             if (game != nil) {
                 self.gameViewController?.addGame(game: game!)
-                // Removing current screen to go back to the previous screen (Overview in this case)
-                self.navigationController?.popViewController(animated: true)
+                let alert = UIAlertController(title: "Done", message: "A new game has been created.", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Go back", style: .cancel, handler: { action in
+                    // Removing current screen to go back to the previous screen (Overview in this case)ß
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true)
+                
             }
         }
     }
