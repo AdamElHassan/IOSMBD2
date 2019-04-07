@@ -19,7 +19,11 @@ class GamesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.apiGamesController
+        
+        // Make table refresh on drag down
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(getGames), for: .valueChanged)
+        table.refreshControl = refreshControl
         
         getGames()        
     }
@@ -62,12 +66,13 @@ class GamesViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func getGames(){
+    @objc func getGames(){
         self.apiGamesController.getGames() { games in
             if (games != nil) {
                 self.content = (games?.games ?? [])
                 self.table.reloadData()
             }
+            self.refreshControl?.endRefreshing()
         }
     }
     
