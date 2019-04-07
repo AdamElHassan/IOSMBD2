@@ -11,15 +11,16 @@ import MapKit
 
 class GamesViewController: UITableViewController {
     
-    private var apiGamesController: ApiGamesController!
-    private var emptyList : Bool = true
     @IBOutlet var table: UITableView!
-    var content: [GameData]!
+    
+    private var apiGamesController: ApiGamesController = ApiGamesController()
+    private var emptyList : Bool = true
+    private var content: [GameData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.apiGamesController = ApiGamesController()
-        content = []
+        //self.apiGamesController
+        
         getGames()        
     }
     
@@ -64,7 +65,7 @@ class GamesViewController: UITableViewController {
     func getGames(){
         self.apiGamesController.getGames() { games in
             if (games != nil) {
-                self.content = games?.games
+                self.content = (games?.games ?? [])
             }
         }
     }

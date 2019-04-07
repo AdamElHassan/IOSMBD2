@@ -15,8 +15,8 @@ class GameDetailViewController: UIViewController {
 
     @IBOutlet weak var gameStatus: UILabel!
     @IBOutlet weak var gameID: UILabel!
-    
     @IBOutlet weak var shareButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +28,7 @@ class GameDetailViewController: UIViewController {
 
     // Used to share the ID of a game
     @IBAction func shareGame(_ sender: Any) {
-        let firstActivityItem = "Join this game ID!! ID: " + String(game?._id.suffix(4) ?? "Not found")
+        let firstActivityItem = "Join this game ID! ID: " + String(game?._id.suffix(4) ?? "Not found")
         
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem], applicationActivities: nil)

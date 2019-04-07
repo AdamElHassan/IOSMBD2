@@ -10,21 +10,20 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    private var apiLoginController : ApiLoginController!
+    private var apiLoginController : ApiLoginController = ApiLoginController()
+    private var activityIndicator : UIActivityIndicatorView?
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    private var activityIndicator : UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var logoImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.apiLoginController = ApiLoginController()
         setLogo()
         self.activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-        view.addSubview(self.activityIndicator)
-        self.activityIndicator.center = view.center
-        self.activityIndicator.hidesWhenStopped = true
+        view.addSubview(self.activityIndicator!)
+        self.activityIndicator?.center = view.center
+        self.activityIndicator?.hidesWhenStopped = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow),
@@ -68,7 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.present(alert, animated: true)
                 self.enableTextInput()
                 self.passwordTextField.text = ""
-                self.activityIndicator.stopAnimating()
+                self.activityIndicator?.stopAnimating()
             } else {
                 UserDefaults.standard.setValue(username!, forKey: "username")
                 do {
@@ -84,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let GamesViewController = storyBoard.instantiateViewController(withIdentifier: "GamesOverview") as! UINavigationController
                 print(GamesViewController)
                 self.present(GamesViewController, animated: true, completion: nil)
-                self.activityIndicator.stopAnimating()
+                self.activityIndicator?.stopAnimating()
             }
         }
     }
@@ -121,7 +120,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func startActivityIndicator() {
-        self.activityIndicator.startAnimating()
+        self.activityIndicator?.startAnimating()
     }
     func setLogo(){
         // Getting a random picture

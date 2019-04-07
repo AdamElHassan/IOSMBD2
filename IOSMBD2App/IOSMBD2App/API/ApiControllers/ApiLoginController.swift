@@ -10,7 +10,7 @@ import Foundation
 
 class ApiLoginController {
     
-    private var user : LoginUserData!
+    private var user : LoginUserData?
     
     func makeRequest(url: String, httpMethode: String, data: [String: Any]) -> URLRequest! {
         guard let url = URL(string: "https://blankapi.herokuapp.com/" + url	) else {

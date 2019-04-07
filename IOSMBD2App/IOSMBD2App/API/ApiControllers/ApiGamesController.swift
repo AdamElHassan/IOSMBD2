@@ -10,8 +10,8 @@ import Foundation
 
 class ApiGamesController {
     
-    private var games : GamesData!
-    private var game : GameData!
+    private var games : GamesData?
+    private var game : GameData?
     
     func makeRequest(url: String, httpMethode: String, data: [String: String]?) -> URLRequest! {
         guard let url = URL(string: "https://blankapi.herokuapp.com/" + url) else {
