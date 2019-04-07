@@ -124,6 +124,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.activityIndicator.startAnimating()
     }
     func setLogo(){
+        // Getting a random picture
         let number = Int.random(in: 0 ..< 10)
         self.apiLoginController.setLogo(number: String(number)) { data in
             if (data != nil) {

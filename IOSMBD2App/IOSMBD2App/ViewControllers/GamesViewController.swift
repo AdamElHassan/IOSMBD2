@@ -24,6 +24,8 @@ class GamesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        // When there is no data you still want to return 1 so she a message on screen
+        // If you return 0 the next tableview methode wont do anything
         if(content.count == 0){
             emptyList = true
             return 1
@@ -66,10 +68,13 @@ class GamesViewController: UITableViewController {
             }
         }
     }
+    
+    // Adding the game localy will prevent another API call to have a updated table
     func addGame(game: GameData){
         content.insert(game, at: 0)
         self.do_table_refresh()
     }
+    
     func do_table_refresh() {
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {
@@ -78,6 +83,8 @@ class GamesViewController: UITableViewController {
         }
     }
     
+    // The same prepare is used to show different screens
+    // To create the correct viewcontroller segue identifiers are used
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "CreateGameView"){
             if let createGame = segue.destination as? CreateGameViewController{

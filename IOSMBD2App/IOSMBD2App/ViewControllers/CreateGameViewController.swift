@@ -14,7 +14,7 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var statusPicker: UIPickerView!
     var pickerData: [String] = []
     private var apiGamesController: ApiGamesController = ApiGamesController()
-    private var selectedPick : String = "In lobby"
+    private var selectedPick : String = "In lobby" // Starts at the first item in the list
     var gameViewController : GamesViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,6 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // Number of columns of data
@@ -55,6 +54,7 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.apiGamesController.createGame(status: selectedPick) { game in
             if (game != nil) {
                 self.gameViewController.addGame(game: game!)
+                // Removing current screen to go back to the previous screen (Overview in this case)
                 self.navigationController?.popViewController(animated: true)
             }
         }

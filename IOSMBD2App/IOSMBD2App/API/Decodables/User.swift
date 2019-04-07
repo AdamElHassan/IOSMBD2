@@ -8,15 +8,12 @@
 
 import Foundation
 
-struct UsersData : Codable {
-    var users : [UserData?]
-}
-
+// Only the ID is needed so there is no reason to get all the data
 struct UserData : Codable {
-    var isAdmin : Bool
     var _id     : String
 }
-
+// The login API call only returns the username and password
+// So a different codable is used for this
 struct LoginUserData : Codable {
     var username : String
     var password : String

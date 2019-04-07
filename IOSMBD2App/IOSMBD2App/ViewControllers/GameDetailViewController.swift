@@ -26,20 +26,21 @@ class GameDetailViewController: UIViewController {
         gameStatus.sizeToFit()
     }
 
+    // Used to share the ID of a game
     @IBAction func shareGame(_ sender: Any) {
         let firstActivityItem = "Join this game ID!! ID: " + String(game?._id.suffix(4) ?? "Not found")
         
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem], applicationActivities: nil)
         
-        // This lines is for the popover you need to show in iPad
+        // Popover you need to show in iPad
         activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
         
-        // This line remove the arrow of the popover to show in iPad
+        // The arrow of the popover to show in iPad
         activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
         activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
         
-        // Anything you want to exclude
+        // Excluding different share methodes
         activityViewController.excludedActivityTypes = [
             UIActivity.ActivityType.postToWeibo,
             UIActivity.ActivityType.print,

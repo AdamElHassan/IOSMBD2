@@ -22,8 +22,8 @@ class ApiGamesController {
         urlRequest.httpMethod = httpMethode
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        // You only want to add body to the api call if it is a post request.
         if(data != nil && httpMethode == "POST"){
-
             let json: Data
             do {
                 json = try JSONSerialization.data(withJSONObject: data ?? [], options: [])
