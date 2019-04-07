@@ -60,10 +60,10 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 let alert = UIAlertController(title: "Done", message: "A new game has been created.", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Go back", style: .cancel, handler: { action in
+                    // Removing current screen to go back to the previous screen (Overview in this case)ß
                     self.navigationController?.popViewController(animated: true)
                 }))
                 self.present(alert, animated: true)
-                // Removing current screen to go back to the previous screen (Overview in this case)
                 
             }
         }
